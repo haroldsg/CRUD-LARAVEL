@@ -27,3 +27,23 @@ Route::get('/edit', function () {
 })->name('edit');
 
 Route::get('/logout', '\App\Http\Controllers\UserController@logout');
+
+Route::get('/showLogin', [UserController::class, 'showLogin'])->name('login.form');
+Route::post('/login', [UserController::class, 'login'])->name('login');
+
+
+Route::post('/sendEmail', [UserController::class, 'sendEmail'])->name('email');
+
+Route::get('/mailBox', [UserController::class, 'mailBox'])->name('mailBox.form');
+
+Route::get('/email', function () {
+    $user = session('user'); // Obtener el usuario de la sesión
+
+    if (!$user) {
+        $user = null; // Si no hay usuario en sesión, asignamos null
+    }
+
+    return view('email', ['user' => $user]);
+})->name('email.form');
+
+Route::post('/markAsRead/{id}', [UserController::class, 'markAsRead'])->name('markAsRead');

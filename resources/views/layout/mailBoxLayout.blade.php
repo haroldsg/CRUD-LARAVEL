@@ -10,11 +10,12 @@
 <body>
 
     <div id="top-bar">
-        @yield('top-bar') 
+        <img src="https://cdn-icons-png.freepik.com/512/14026/14026645.png" id="icon-house">
+        <button id="btn-send-email" class="btn-bar">Send email</button>
     </div>
 
-    <div id="welcome">
-        @yield('welcome')
+    <div id="mailBox">
+        @yield('mailBox')
     </div>
     
     <script src="{{ asset('js/app.js') }}"></script> <!-- Si tienes un archivo app.js -->
